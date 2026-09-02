@@ -1,181 +1,40 @@
-import { BuyButton } from "@/components/BuyButton";
+"use client";
 
-export default function HomePage() {
-  return (
-    <>
-      <header className="top">
-        <div className="wrap inner">
-          <div className="brand">AION Desks</div>
-          <nav>
-            <a href="#desks">Desks</a>
-            <a href="#faq">FAQ</a>
-            <a href="#buy">Buy</a>
-          </nav>
-        </div>
-      </header>
+import { useState } from "react";
+import { ArrowRight, Bot, CalendarDays, Check, ChevronDown, FileText, LockKeyhole, Mail, Menu, Network, ShieldCheck, Smartphone, Sparkles, UserCheck, X } from "lucide-react";
 
-      <section className="hero">
-        <div className="wrap">
-          <p className="eyebrow">Digital products · drafts only</p>
-          <h1>A desk that writes. You still hit send.</h1>
-          <p className="lede">
-            Two operating packs. One for owners who need a chief of staff. One for
-            anyone who wants a calmer week. Neither one mails, collects, or becomes
-            a second CRM.
-          </p>
-          <div className="hero-actions">
-            <a className="btn gold" href="#buy">
-              Choose a desk
-            </a>
-            <a className="btn ghost" href="#faq">
-              It does not send email
-            </a>
-          </div>
-        </div>
-      </section>
+function Logo() { return <a href="#top" className="logo"><span>A</span>AION <b>WORKFORCE</b></a>; }
 
-      <section className="band" id="desks">
-        <div className="wrap">
-          <p className="eyebrow">Hard stops</p>
-          <h2>Built to stay on your side of the send button.</h2>
-          <div className="proofs">
-            <div className="proof">
-              <strong>Draft-only follow-up</strong>
-              Replies land in drafts. You review, edit, and send from your own client.
-            </div>
-            <div className="proof">
-              <strong>Never auto-send</strong>
-              No batch send, no send-later engine, no silent delivery while you sleep.
-            </div>
-            <div className="proof">
-              <strong>Not a CRM</strong>
-              Logs and drafts, not a pipeline, not a harvested contact warehouse.
-            </div>
-          </div>
-        </div>
-      </section>
+export default function Home() {
+  const [menu, setMenu] = useState(false);
+  const [autoSend, setAutoSend] = useState(false);
+  return <main id="top">
+    <nav className="nav shell"><Logo/><div className="navlinks"><a href="#inside">What you get</a><a href="#setup">How it works</a><a href="#pricing">Pricing</a></div><a className="button small desktop-cta" href="#pricing">Deploy your desk <ArrowRight size={15}/></a><button className="menu" onClick={()=>setMenu(!menu)} aria-label="Open menu">{menu?<X/>:<Menu/>}</button>{menu&&<div className="mobile-menu"><a href="#inside">What you get</a><a href="#setup">How it works</a><a href="#pricing">Pricing</a></div>}</nav>
 
-      <section id="buy">
-        <div className="wrap columns">
-          <article className="card">
-            <p className="eyebrow">SKU 1 · Owners</p>
-            <h2>Operator Desk</h2>
-            <p className="who">For one-person companies that still need a chief of staff.</p>
-            <ul>
-              <li>Chief of Staff seat: morning pulse and 4pm decision pack.</li>
-              <li>Follow-Up Engine: drafts only. Never auto-send.</li>
-              <li>Calendar + inbox in draft/hold mode. You confirm everything outbound.</li>
-              <li>Written charter, routing, connectors, routines, walkthrough.</li>
-            </ul>
-            <div className="buy-stack">
-              <div className="price-row">
-                <div>
-                  <div className="price">
-                    $47 <span>template</span>
-                  </div>
-                  <p className="fine">Operating pack you drop into your workspace.</p>
-                </div>
-              </div>
-              <BuyButton sku="operator_template">Buy template · $47</BuyButton>
-              <div className="price-row">
-                <div>
-                  <div className="price">
-                    $179 <span>template + 45-min install</span>
-                  </div>
-                  <p className="fine">Same pack, plus a live setup so scopes stay draft-only.</p>
-                </div>
-              </div>
-              <BuyButton sku="operator_install" variant="ink">
-                Buy with 45-min install · $179
-              </BuyButton>
-            </div>
-          </article>
+    <section className="hero shell">
+      <div className="eyebrow"><span className="live-dot"/> Deployable AI workforce · No custom build required</div>
+      <h1>Your business doesn’t need<br/>another app. <em>It needs operators.</em></h1>
+      <p className="hero-copy">Deploy a lightweight Chief of Staff and follow-up workforce on Grok Bot. It works from your phone, fits the tools you already use, and keeps you in control.</p>
+      <div className="hero-actions"><a className="button hero-button" href="#pricing">Deploy AION Operator Desk <ArrowRight size={18}/></a><a className="text-link" href="#setup">See the 3-step setup ↓</a></div>
+      <div className="proof"><span><Check/> One-time purchase</span><span><Check/> Set up in under 60 minutes</span><span><Check/> No new CRM</span></div>
+      <div className="console-card"><div className="console-top"><div className="window-dots"><i/><i/><i/></div><span>OPERATOR DESK · TODAY</span><b>● ACTIVE</b></div><div className="console-body"><aside><span className="active"><Sparkles/> Pulse</span><span><Mail/> Follow-up</span><span><CalendarDays/> Calendar</span><span><FileText/> Decision pack</span></aside><div className="brief"><div className="brief-head"><div><small>WEDNESDAY · 8:00 AM</small><h3>Good morning, Alex.</h3></div><span>3 items need you</span></div>{[[Mail,'Follow up with 4 warm leads','Drafts are ready. Nothing sends without your approval.','Review drafts','purple'],[CalendarDays,"Prepare for today’s calls",'2 meetings · briefs and open decisions attached.','Open brief','blue'],[Network,'Weekday pulse is ready','Priorities routed. Low-confidence items escalated to you.','View pulse','green']].map(([Icon,title,copy,action,color]:any)=><div className="task" key={title}><div className={`iconbox ${color}`}><Icon/></div><div><b>{title}</b><p>{copy}</p></div><button>{action}</button></div>)}</div></div></div>
+    </section>
 
-          <article className="card">
-            <p className="eyebrow">SKU 2 · Everyday</p>
-            <h2>Everyday Desk</h2>
-            <p className="who">For people who want their week handled — without a company stack.</p>
-            <ul>
-              <li>Calendar holds you confirm before anyone else is invited.</li>
-              <li>Inbox drafts you send yourself.</li>
-              <li>Weekly brief: what moved, what is waiting, what can stay quiet.</li>
-              <li>No CRM. No pipeline. No contact database.</li>
-            </ul>
-            <div className="buy-stack">
-              <div className="price-row">
-                <div>
-                  <div className="price">
-                    $39 <span>template</span>
-                  </div>
-                  <p className="fine">Pack for your own calendar, inbox, and notebook.</p>
-                </div>
-              </div>
-              <BuyButton sku="everyday_template">Buy template · $39</BuyButton>
-              <div className="price-row">
-                <div>
-                  <div className="price">
-                    $149 <span>template + install</span>
-                  </div>
-                  <p className="fine">Guided install so the desk never grows a CRM.</p>
-                </div>
-              </div>
-              <BuyButton sku="everyday_install" variant="ink">
-                Buy with install · $149
-              </BuyButton>
-            </div>
-          </article>
-        </div>
-      </section>
+    <section className="statement shell"><p>MOST AI TOOLS WAIT FOR A PROMPT.</p><h2>AION shows up with a job to do.</h2><div className="three">{[[Bot,'Chartered operators','Each agent gets a defined role, authority boundary, and escalation path—so it knows what to do and when to stop.'],[Network,'Built-in routing','Research, draft, log, or escalate. Work goes to the right operator instead of getting lost in one endless chat.'],[Smartphone,'Runs where you are','Start from your phone. Connect Gmail, Calendar, and Notion. No heavyweight platform or technical team required.']].map(([Icon,title,copy]:any,i)=><article key={title}><span>0{i+1}</span><Icon/><h3>{title}</h3><p>{copy}</p></article>)}</div></section>
 
-      <section className="faq" id="faq">
-        <div className="wrap">
-          <p className="eyebrow">FAQ</p>
-          <h2>Straight answers.</h2>
-          <details open>
-            <summary>Does this send email for me?</summary>
-            <p>
-              No. It does not send email for you. Operator Desk and Everyday Desk
-              write drafts. You hit send in your own mail client. There is no auto-send
-              path.
-            </p>
-          </details>
-          <details>
-            <summary>What is in the Operator Desk pack?</summary>
-            <p>
-              A charter for the Chief of Staff and Follow-Up Engine, routing rules,
-              connector steps (calendar, draft-only inbox, notebook), weekday routines,
-              and a short walkthrough. Install is a 45-minute live pass to lock scopes.
-            </p>
-          </details>
-          <details>
-            <summary>What is in the Everyday Desk pack?</summary>
-            <p>
-              Calendar practice, inbox-draft practice, and a weekly brief template.
-              It is not a CRM and will not become one.
-            </p>
-          </details>
-          <details>
-            <summary>Will you collect payments or chase invoices?</summary>
-            <p>
-              No. These desks do not collect. Stripe on this site is only for buying
-              the packs themselves.
-            </p>
-          </details>
-          <details>
-            <summary>What do I download after checkout?</summary>
-            <p>
-              A zip for the desk you bought. After payment, the success page links the
-              pack. Install SKUs include the same template plus a scheduling note for
-              the live session.
-            </p>
-          </details>
-        </div>
-      </section>
+    <section id="inside" className="inside"><div className="shell split"><div><p className="section-kicker">THE FIRST WORKFORCE PACK</p><h2>Meet AION<br/><em>Operator Desk.</em></h2><p>For local owners and solo operators who already have the tools—but still lose time and revenue to missed follow-up.</p><div className="audience-note"><UserCheck/><div><b>Built for real operators</b><span>Owner-led businesses, consultants, creators, and everyday professionals. Not agencies looking for a custom client build.</span></div></div></div><div className="manifest">{[['Chief of Staff charter','Plans the day, routes work, surfaces decisions'],['Draft-only Follow-Up Engine','Prepares personalized follow-ups for your approval'],['Weekday Pulse','Delivers priorities and open loops each morning'],['4 PM Decision Pack','Collects what needs your call before the day ends'],['Connection playbooks','Step-by-step Gmail, Calendar, and Notion setup'],['12-minute walkthrough','Go from download to a working desk without guessing']].map(([a,b],i)=><div className="manifest-row" key={a}><span>0{i+1}</span><div><b>{a}</b><p>{b}</p></div><Check/></div>)}</div></div></section>
 
-      <footer className="wrap">
-        <span>AION Desks · draft only</span>
-        <span>You send. The desk drafts.</span>
-      </footer>
-    </>
-  );
+    <section id="setup" className="setup shell"><p className="section-kicker">FROM DOWNLOAD TO DEPLOYED</p><h2>Live in three moves.</h2><div className="steps">{[[Bot,'Get Grok Bot','Follow the included mobile-first guide to download Grok, access Grok Bot, and create your workspace.','Grok Bot is the prerequisite'],[FileText,'Install the workforce','Copy in the charters and routing logic, then connect only the tools you choose.','Guided templates included'],[ShieldCheck,'Approve the first run','Review the generated pulse and drafts. Your workforce learns the operating rhythm—without inventing a new system.','You keep final control']].map(([Icon,title,copy,note]:any,i)=><article key={title}><b>{i+1}</b><div className="step-icon"><Icon/></div><h3>{title}</h3><p>{copy}</p><span>{note} <ArrowRight/></span></article>)}</div></section>
+
+    <section className="safety"><div className="shell safety-grid"><div><div className="shield"><LockKeyhole/></div><p className="section-kicker">AUTONOMY WITH A DENY FLOOR</p><h2>Powerful by design.<br/>Limited on purpose.</h2><p>The standard Operator Desk drafts, organizes, and escalates. It cannot send an email, collect sensitive information, or create a second source of truth behind your back.</p></div><div className="permission-card"><div className="permission-head"><div><b>Workforce permissions</b><span>Default safety profile</span></div><ShieldCheck/></div>{[['Research context','ALLOWED'],['Draft follow-ups','ALLOWED'],['Log approved activity','ALLOWED']].map(x=><div className="permission-row" key={x[0]}><span>{x[0]}</span><i className="allowed">{x[1]}</i></div>)}<div className="permission-row"><span>Send email automatically</span><i className={autoSend?'opted':'blocked'}>{autoSend?'OPTED IN':'BLOCKED'}</i></div><label className="optin"><button role="switch" aria-checked={autoSend} onClick={()=>setAutoSend(!autoSend)} className={autoSend?'on':''}><i/></button><span><b>Request auto-send access</b><small>Requires separate opt-in, consent to safer sending limits, and approval rules. This demo does not activate sending.</small></span></label></div></div></section>
+
+    <section id="pricing" className="pricing shell"><p className="section-kicker">START SMALL. DEPLOY TODAY.</p><h2>Choose your workforce.<br/>Choose your setup.</h2><div className="offer-label"><span>FOR BUSINESS OWNERS</span><p>Protect follow-up, surface decisions, and run a tighter operating day.</p></div><div className="price-grid"><Price name="Operator Desk" label="SELF-DEPLOY" price="47" copy="Everything you need to install it yourself." items={['Chief of Staff charter','Draft-only follow-up engine','Routing and deny-floor logic','Gmail, Calendar & Notion guides','12-minute setup walkthrough']} cta="Get Operator Desk" href="https://buy.stripe.com/3cI8wPeQ4cQA8lM8A07ok03"/><Price featured name="Operator Desk + Install" label="DONE WITH YOU" price="179" copy="We deploy it with you and verify the first run." items={['Everything in self-deploy','One 45-minute Grok Bot install','Connector setup guidance','First pulse + draft review','Safe personalization to your workflow']} cta="Book Operator Install" href="https://buy.stripe.com/5kQeVdcHW17S1XobMc7ok04"/></div><div className="offer-label consumer"><span>FOR EVERYDAY LIFE</span><p>Organize personal priorities, reminders, research, and open loops from your phone.</p></div><div className="price-grid"><Price name="Everyday Desk" label="SELF-DEPLOY" price="47" copy="A personal operator system for life outside the office." items={['Personal Chief of Staff charter','Daily priority and reminder routing','Draft-only message support','Calendar & Notion connection guides','12-minute setup walkthrough']} cta="Get Everyday Desk" href="https://buy.stripe.com/00w6oHeQ417SdG6g2s7ok05"/><Price featured name="Everyday Desk + Install" label="DONE WITH YOU" price="179" copy="We install your personal workforce and verify the first run." items={['Everything in self-deploy','One 45-minute Grok Bot install','Personal workflow setup','First daily pulse review','Safe personalization to your routine']} cta="Book Everyday Install" href="https://buy.stripe.com/fZu14n7nC8Ak0Tk6rS7ok06"/></div></section>
+
+    <section className="entry"><div className="shell"><p>THIS IS THE ENTRY POINT</p><h2>One desk today.<br/><em>A workforce tomorrow.</em></h2><span>AION Operator Desk is your first deployable unit. Add specialized operators for sales, content, client service, research, and operations as your needs grow.</span><a className="button light" href="#pricing">Deploy your first operator <ArrowRight/></a></div></section>
+
+    <section className="faq shell"><p className="section-kicker">BEFORE YOU DEPLOY</p><h2>Clear answers.</h2>{[['Is this a custom AI build?','No. It is a productized, proven workforce setup you install on Grok Bot. The $179 tier includes guided implementation, not custom software development.'],['Do I need Grok Bot first?','Yes. Your purchase includes a clear guide showing you how to get Grok, open Grok Bot, and prepare the workspace before installing AION.'],['Will it send emails on its own?','Not by default. The standard system only drafts. Auto-send requires a separate explicit opt-in, safer sending limits, approval rules, and acceptance of the additional terms.'],['Does it replace my CRM or tools?','No. It works with Gmail, Calendar, and Notion—and it is specifically told not to invent another CRM or source of truth.'],['Is the income claim guaranteed?','No. Marketplace earnings are self-reported examples, not promises. This product is sold for the time and follow-up leverage it creates, not as a guaranteed income system.']].map(([q,a])=><details key={q}><summary>{q}<ChevronDown/></summary><p>{a}</p></details>)}</section>
+    <footer><div className="shell footer-grid"><Logo/><p>Deployable intelligence for people building in the real world.</p><div><a href="#inside">Product</a><a href="#setup">Setup</a><a href="#pricing">Pricing</a></div></div><div className="shell footer-bottom"><span>© 2026 AION Systems. All rights reserved.</span><span>Privacy · Terms · Auto-send safety</span></div></footer>
+  </main>;
 }
+
+function Price({name,label,price,copy,items,cta,href,featured=false}:{name:string,label:string,price:string,copy:string,items:string[],cta:string,href:string,featured?:boolean}) { return <article className={`price-card ${featured?'featured':''}`}>{featured&&<div className="popular">MOST POPULAR</div>}<div><span>{label}</span><h3>{name}</h3><p>{copy}</p></div><div className="price"><sup>$</sup>{price} <small>one time</small></div><ul>{items.map(x=><li key={x}><Check/> {x}</li>)}</ul><a href={href} className={`button ${featured?'light':'outline'}`} aria-label={`${cta} — continue to secure Stripe checkout`}>{cta}<ArrowRight/></a><small className="micro">{featured?'Limited install slots · No custom software build':'Instant digital download · Grok Bot required'}</small></article> }

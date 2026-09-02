@@ -2,15 +2,19 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "AION Desks — draft-only operating packs",
+  title: "AION Workforce — Deploy Your Operator Desk",
   description:
-    "Two digital desks. Operator Desk for owners. Everyday Desk for your own calendar and inbox. Drafts only. Never auto-send.",
+    "A lightweight, mobile-ready autonomous workforce you can deploy on Grok Bot in under an hour.",
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className="antialiased">{children}</body>
     </html>
   );
 }
