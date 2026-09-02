@@ -1,0 +1,145 @@
+:root {
+  --ink: #14110c;
+  --paper: #f6f1e6;
+  --paper-2: #eee6d6;
+  --rule: #d7ccb6;
+  --muted: #6b6256;
+  --gold: #9a6b2f;
+  --gold-2: #c4924a;
+  --white: #fffcf6;
+  --danger: #8a3b2a;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+a { color: inherit; }
+button { font: inherit; }
+.wrap { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+.eyebrow {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+header.top {
+  border-bottom: 1px solid var(--rule);
+  background: var(--white);
+}
+header.top .inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 0;
+}
+.brand { font-weight: 700; letter-spacing: 0.04em; }
+nav a { margin-left: 22px; font-size: 0.95rem; color: var(--muted); text-decoration: none; }
+nav a:hover { color: var(--ink); }
+
+.hero { padding: 72px 0 48px; }
+.hero h1 {
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  line-height: 1.08;
+  max-width: 16ch;
+  font-weight: 700;
+}
+.hero p.lede {
+  margin-top: 18px;
+  max-width: 42ch;
+  font-size: 1.2rem;
+  color: #3c362d;
+}
+.hero-actions { margin-top: 28px; display: flex; gap: 12px; flex-wrap: wrap; }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+  padding: 12px 18px;
+  text-decoration: none;
+  cursor: pointer;
+  min-height: 46px;
+}
+.btn.ghost { background: transparent; color: var(--ink); }
+.btn.gold { background: var(--gold); border-color: var(--gold); color: var(--white); }
+.btn:disabled { opacity: 0.55; cursor: wait; }
+.btn.full { width: 100%; }
+.btn.err { border-color: var(--danger); }
+
+.notice {
+  margin-top: 10px;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.85rem;
+  color: var(--danger);
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 12px 0 64px;
+}
+.card {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+.card h2 { font-size: 1.85rem; margin: 6px 0 8px; }
+.who { color: var(--muted); margin-bottom: 16px; }
+.card ul { margin: 8px 0 22px; padding-left: 18px; }
+.card li { margin: 8px 0; }
+.price-row { display: flex; justify-content: space-between; gap: 12px; margin: 10px 0; align-items: baseline; }
+.price { font-size: 1.65rem; font-weight: 700; }
+.price span { font-size: 0.9rem; font-weight: 400; color: var(--muted); }
+.buy-stack { margin-top: auto; display: flex; flex-direction: column; gap: 10px; }
+.fine { font-size: 0.85rem; color: var(--muted); margin-top: 8px; }
+
+.band { background: var(--paper-2); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 56px 0; }
+.band h2, .faq h2 { font-size: 1.8rem; margin-bottom: 18px; }
+.proofs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.proof { background: var(--white); border: 1px solid var(--rule); padding: 20px; }
+.proof strong { display: block; margin-bottom: 6px; }
+
+.faq { padding: 56px 0 80px; }
+details {
+  border-top: 1px solid var(--rule);
+  padding: 16px 0;
+}
+details:last-of-type { border-bottom: 1px solid var(--rule); }
+summary { cursor: pointer; font-weight: 600; }
+details p { margin-top: 8px; color: #3c362d; }
+
+footer {
+  border-top: 1px solid var(--rule);
+  padding: 28px 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.page { padding: 64px 0 80px; max-width: 640px; }
+.page h1 { font-size: 2.2rem; margin: 8px 0 16px; }
+.page p { margin: 10px 0; }
+.packs { display: flex; flex-direction: column; gap: 10px; margin-top: 24px; }
+
+@media (max-width: 820px) {
+  .columns, .proofs { grid-template-columns: 1fr; }
+  nav a { margin-left: 14px; }
+}
