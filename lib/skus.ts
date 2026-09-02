@@ -24,3 +24,7 @@ export function packForSku(sku: Sku): { href: string; label: string } {
   }
   return { href: "/packs/everyday-desk.zip", label: "Download Everyday Desk pack" };
 }
+
+export function priceIdForSku(_sku: Sku): string | undefined {
+  return undefined;
+}
