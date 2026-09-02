@@ -1,31 +1,13 @@
 import Link from "next/link";
-import { isSku, packForSku, type Sku } from "@/lib/skus";
-import { getStripe } from "@/lib/stripe";
-
-async function skuFromSession(sessionId: string | undefined): Promise<Sku | null> {
-  if (!sessionId) return null;
-  try {
-    const session = await getStripe().checkout.sessions.retrieve(sessionId);
-    const sku = session.metadata?.sku;
-    if (sku && isSku(sku) && session.payment_status === "paid") {
-      return sku;
-    }
-    if (sku && isSku(sku) && session.status === "complete") {
-      return sku;
-    }
-  } catch {
-    return null;
-  }
-  return null;
-}
+import { isSku, packForSku } from "@/lib/skus";
 
 export default async function SuccessPage({
   searchParams,
 }: {
-  searchParams: Promise<{ session_id?: string }>;
+  searchParams: Promise<{ sku?: string }>;
 }) {
-  const { session_id } = await searchParams;
-  const sku = await skuFromSession(session_id);
+  const { sku: raw } = await searchParams;
+  const sku = raw && isSku(raw) ? raw : null;
   const packs = sku
     ? [packForSku(sku)]
     : [
@@ -50,8 +32,7 @@ export default async function SuccessPage({
       </div>
       {!sku ? (
         <p className="fine">
-          If checkout metadata is missing, both placeholder packs are listed. After
-          Stripe is configured, this page shows only the desk you bought.
+          If you came here without a desk in the URL, both packs are listed.
         </p>
       ) : null}
       <p style={{ marginTop: 28 }}>

@@ -7,18 +7,15 @@ export const SKUS = [
 
 export type Sku = (typeof SKUS)[number];
 
+export const PAYMENT_LINKS: Record<Sku, string> = {
+  operator_template: "https://buy.stripe.com/3cI8wPeQ4cQA8lM8A07ok03",
+  operator_install: "https://buy.stripe.com/5kQeVdcHW17S1XobMc7ok04",
+  everyday_template: "https://buy.stripe.com/00w6oHeQ417SdG6g2s7ok05",
+  everyday_install: "https://buy.stripe.com/fZu14n7nC8Ak0Tk6rS7ok06",
+};
+
 export function isSku(value: string): value is Sku {
   return (SKUS as readonly string[]).includes(value);
-}
-
-export function priceIdForSku(sku: Sku): string | undefined {
-  const map: Record<Sku, string | undefined> = {
-    operator_template: process.env.STRIPE_PRICE_OPERATOR_TEMPLATE,
-    operator_install: process.env.STRIPE_PRICE_OPERATOR_INSTALL,
-    everyday_template: process.env.STRIPE_PRICE_EVERYDAY_TEMPLATE,
-    everyday_install: process.env.STRIPE_PRICE_EVERYDAY_INSTALL,
-  };
-  return map[sku];
 }
 
 export function packForSku(sku: Sku): { href: string; label: string } {
