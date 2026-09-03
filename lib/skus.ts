@@ -19,10 +19,13 @@ export function isSku(value: string): value is Sku {
 }
 
 export function packForSku(sku: Sku): { href: string; label: string } {
-  if (sku.startsWith("operator")) {
-    return { href: "/packs/operator-desk.zip", label: "Download Operator Desk pack" };
-  }
-  return { href: "/packs/everyday-desk.zip", label: "Download Everyday Desk pack" };
+  const packs: Record<Sku, { href: string; label: string }> = {
+    operator_template: { href: "/packs/operator-desk.zip", label: "Download Operator Desk pack" },
+    operator_install: { href: "/packs/operator-desk-install.zip", label: "Download Operator Desk install pack" },
+    everyday_template: { href: "/packs/everyday-desk.zip", label: "Download Everyday Desk pack" },
+    everyday_install: { href: "/packs/everyday-desk-install.zip", label: "Download Everyday Desk install pack" },
+  };
+  return packs[sku];
 }
 
 export function priceIdForSku(_sku: Sku): string | undefined {
