@@ -8,12 +8,26 @@ export default async function SuccessPage({
 }) {
   const { sku: raw } = await searchParams;
   const sku = raw && isSku(raw) ? raw : null;
-  const packs = sku
-    ? [packForSku(sku)]
-    : [
-        packForSku("operator_template"),
-        packForSku("everyday_template"),
-      ];
+
+  if (!sku) {
+    return (
+      <main className="wrap page">
+        <p className="eyebrow">Purchase</p>
+        <h1>Missing purchase.</h1>
+        <p>
+          We could not tell which desk you bought. This page only lists a download
+          when a valid purchase is in the URL.
+        </p>
+        <p style={{ marginTop: 28 }}>
+          <Link className="btn gold" href="/">
+            Back to AION Desks
+          </Link>
+        </p>
+      </main>
+    );
+  }
+
+  const pack = packForSku(sku);
 
   return (
     <main className="wrap page">
@@ -24,17 +38,10 @@ export default async function SuccessPage({
         robot that sends mail.
       </p>
       <div className="packs">
-        {packs.map((pack) => (
-          <a key={pack.href} className="btn gold" href={pack.href} download>
-            {pack.label}
-          </a>
-        ))}
+        <a className="btn gold" href={pack.href} download>
+          {pack.label}
+        </a>
       </div>
-      {!sku ? (
-        <p className="fine">
-          If you came here without a desk in the URL, both packs are listed.
-        </p>
-      ) : null}
       <p style={{ marginTop: 28 }}>
         <Link href="/">Back to AION Desks</Link>
       </p>
