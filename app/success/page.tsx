@@ -34,8 +34,11 @@ export default async function SuccessPage({
       <p className="eyebrow">Paid</p>
       <h1>Your desk is ready.</h1>
       <p>
-        Download the pack zip. It is a template: documents and setup steps, not a
-        robot that sends mail.
+        Download the pack zip. Documents and setup steps, not a robot that sends
+        mail. One-time. Not a subscription.
+        {sku.includes("_install")
+          ? " This zip includes INSTALL.md for a human sit."
+          : " Template only. No INSTALL.md."}
       </p>
       <div className="packs">
         <a className="btn gold" href={pack.href} download>

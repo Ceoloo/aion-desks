@@ -16,12 +16,12 @@ export default function HomePage() {
 
       <section className="hero">
         <div className="wrap">
-          <p className="eyebrow">Digital products · drafts only</p>
+          <p className="eyebrow">Digital products · one-time · drafts only</p>
           <h1>A desk that writes. You still hit send.</h1>
           <p className="lede">
-            Two operating packs. One for owners who need a chief of staff. One for
-            anyone who wants a calmer week. Neither one mails, collects, or becomes
-            a second CRM.
+            Two operating packs, four one-time SKUs. One for owners who need a chief
+            of staff. One for anyone who wants a calmer week. Neither one mails,
+            collects, or becomes a second CRM. Not a subscription.
           </p>
           <div className="hero-actions">
             <a className="btn gold" href="#buy">
@@ -71,7 +71,7 @@ export default function HomePage() {
               <div className="price-row">
                 <div>
                   <div className="price">
-                    $47 <span>template</span>
+                    $47 <span>one-time template</span>
                   </div>
                   <p className="fine">Operating pack you drop into your workspace.</p>
                 </div>
@@ -80,7 +80,7 @@ export default function HomePage() {
               <div className="price-row">
                 <div>
                   <div className="price">
-                    $179 <span>template + 45-min install</span>
+                    $179 <span>one-time template + 45-min install</span>
                   </div>
                   <p className="fine">Same pack, plus a live setup so scopes stay draft-only.</p>
                 </div>
@@ -94,7 +94,7 @@ export default function HomePage() {
           <article className="card">
             <p className="eyebrow">SKU 2 · Everyday</p>
             <h2>Everyday Desk</h2>
-            <p className="who">For people who want their week handled — without a company stack.</p>
+            <p className="who">For people who want their week handled, without a company stack.</p>
             <ul>
               <li>Calendar holds you confirm before anyone else is invited.</li>
               <li>Inbox drafts you send yourself.</li>
@@ -105,7 +105,7 @@ export default function HomePage() {
               <div className="price-row">
                 <div>
                   <div className="price">
-                    $39 <span>template</span>
+                    $39 <span>one-time template</span>
                   </div>
                   <p className="fine">Pack for your own calendar, inbox, and notebook.</p>
                 </div>
@@ -114,7 +114,7 @@ export default function HomePage() {
               <div className="price-row">
                 <div>
                   <div className="price">
-                    $149 <span>template + install</span>
+                    $149 <span>one-time template + install</span>
                   </div>
                   <p className="fine">Guided install so the desk never grows a CRM.</p>
                 </div>
@@ -151,7 +151,8 @@ export default function HomePage() {
             <summary>What is in the Everyday Desk pack?</summary>
             <p>
               Calendar practice, inbox-draft practice, and a weekly brief template.
-              It is not a CRM and will not become one.
+              It is not a CRM and will not become one. $149 is the same pack plus a
+              human install, still one-time.
             </p>
           </details>
           <details>
@@ -164,9 +165,9 @@ export default function HomePage() {
           <details>
             <summary>What do I download after checkout?</summary>
             <p>
-              A zip for the desk you bought. After payment, the success page links the
-              pack. Install SKUs include the same template plus a scheduling note for
-              the live session.
+              A zip for the desk you bought. Template SKUs omit INSTALL.md. Install
+              SKUs add INSTALL.md for a human 45-minute sit. Both are one-time. Not
+              monthly.
             </p>
           </details>
         </div>
