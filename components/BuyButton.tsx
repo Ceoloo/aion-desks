@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { PAYMENT_LINKS, type Sku } from "@/lib/skus";
 
 /**
@@ -13,7 +13,7 @@ export function BuyButton({
   variant = "gold",
 }: {
   sku: Sku;
-  children: React.ReactNode;
+  children: ReactNode;
   variant?: "gold" | "ink";
 }) {
   const [busy, setBusy] = useState(false);

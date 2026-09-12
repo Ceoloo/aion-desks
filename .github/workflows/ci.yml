@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# Desks is a Next.js storefront: install → lint → typecheck → test → build.
+# Secrets stay in the host env (Vercel); CI uses placeholders for build only.
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: lint · typecheck · test · build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Test
+        run: npm test
+
+      - name: Build
+        env:
+          # Build must not require live Stripe secrets; pages use Payment Links.
+          # Checkout Price IDs are resolved at request time from env.
+          STRIPE_SECRET_KEY: sk_test_ci_placeholder
+          NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: pk_test_ci_placeholder
+          STRIPE_PRICE_OPERATOR_TEMPLATE: price_ci_operator_template
+          STRIPE_PRICE_OPERATOR_INSTALL: price_ci_operator_install
+          STRIPE_PRICE_EVERYDAY_TEMPLATE: price_ci_everyday_template
+          STRIPE_PRICE_EVERYDAY_INSTALL: price_ci_everyday_install
+          STRIPE_WEBHOOK_SECRET: whsec_ci_placeholder
+        run: npm run build
