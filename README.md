@@ -2,6 +2,10 @@
 
 Landing page for two AION digital products with Stripe Checkout.
 
+**Ownership:** Permanent product-commerce **satellite** outside the six-repo
+platform set — [ADR-004](https://github.com/Ceoloo/aion-docs/blob/main/adr/ADR-004-aion-desks-repo-ownership.md)
+(Accepted). No control-plane, canonical schema, or Execution Gateway logic here.
+
 ## Products
 
 - Operator Desk (owners): draft-only Follow-Up plus Chief of Staff. Never auto-send. Template 47 USD. Template plus 45-min install 179 USD.
