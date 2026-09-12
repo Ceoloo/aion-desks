@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { PAYMENT_LINKS, type Sku } from "@/lib/skus";
 
 export function BuyButton({
@@ -6,7 +7,7 @@ export function BuyButton({
   variant = "gold",
 }: {
   sku: Sku;
-  children: React.ReactNode;
+  children: ReactNode;
   variant?: "gold" | "ink";
 }) {
   return (

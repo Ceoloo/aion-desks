@@ -13,7 +13,20 @@ Keys and Price IDs come from environment variables only. Never hardcode secrets.
 
 Install dependencies with the package manager, copy the example env file to a local env file, then start the Next.js dev server.
 Open http://localhost:3000
-Without Stripe env vars the buy buttons still render; checkout errors until keys exist.
+Without Stripe env vars the buy buttons still render (Payment Links); `/api/checkout` fails closed until Price IDs exist.
+
+## Quality gates
+
+```bash
+npm run typecheck
+npm test
+npm run lint
+npm run build
+# or all of the above:
+npm run check
+```
+
+CI runs the same gates on every pull request and push to `main`.
 
 ## Vercel environment variables
 
