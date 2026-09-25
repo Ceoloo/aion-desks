@@ -74,7 +74,7 @@ export function BuyButton({
         {busy ? "Starting checkout…" : children}
       </a>
       {error && (
-        <p role="alert" style={{ marginTop: 8, fontSize: 13, color: "#b42318" }}>
+        <p role="alert" style={{ marginTop: 8, fontSize: 13, color: "var(--danger)" }}>
           {error}
         </p>
       )}
