@@ -5,7 +5,9 @@ export default function HomePage() {
     <>
       <header className="top">
         <div className="wrap inner">
-          <div className="brand">AION Desks</div>
+          <div className="brand">
+            AION<span>Desks</span>
+          </div>
           <nav>
             <a href="#desks">Desks</a>
             <a href="#faq">FAQ</a>
@@ -15,22 +17,33 @@ export default function HomePage() {
       </header>
 
       <section className="hero">
-        <div className="wrap">
-          <p className="eyebrow">Digital products · one-time · drafts only</p>
-          <h1>A desk that writes. You still hit send.</h1>
-          <p className="lede">
-            Two operating packs, four one-time SKUs. One for owners who need a chief
-            of staff. One for anyone who wants a calmer week. Neither one mails,
-            collects, or becomes a second CRM. Not a subscription.
-          </p>
-          <div className="hero-actions">
-            <a className="btn gold" href="#buy">
-              Choose a desk
-            </a>
-            <a className="btn ghost" href="#faq">
-              It does not send email
-            </a>
+        <div className="wrap hero-grid">
+          <div>
+            <p className="brand-lockup">
+              AION <em>Desks</em>
+            </p>
+            <h1>A desk that writes. You still hit send.</h1>
+            <p className="lede">
+              Two operating packs, four one-time SKUs. Drafts only — never a second CRM,
+              never auto-send.
+            </p>
+            <div className="hero-actions">
+              <a className="btn gold" href="#buy">
+                Choose a desk
+              </a>
+              <a className="btn ghost" href="#faq">
+                It does not send email
+              </a>
+            </div>
           </div>
+          <aside className="desk-artifact" aria-hidden="true">
+            <div className="meta">Draft · follow-up · not sent</div>
+            <p className="draft">
+              Marcus — following up on inventory capital. Holding the send until you
+              review.
+            </p>
+            <span className="stamp">You hit send</span>
+          </aside>
         </div>
       </section>
 
